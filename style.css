@@ -18,11 +18,9 @@ nav a {
   color: inherit;
   text-align: center;
   padding: 0.5em;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: oklch(80% 3% 200);
+  border-bottom: 1px solid oklch(80% 3% 200);
 }
 .current {
-  border-bottom: 0.4em;
-  padding-bottom: 0.4em;
+  border-bottom: 1px solid oklch(80% 3% 200);
+  padding-bottom: 0.3em;
 }
