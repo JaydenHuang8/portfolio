@@ -6,7 +6,7 @@ body {
     max-width: 100ch;
     margin-inline: auto;
     padding: 1rem;
-  }
+}
 
 nav {
   display: flex;
@@ -21,6 +21,6 @@ nav a {
   border-bottom: 1px solid oklch(80% 3% 200);
 }
 .current {
-  border-bottom: 1px solid oklch(80% 3% 200);
+  border-bottom: 0.4em solid oklch(80% 3% 200);
   padding-bottom: 0.3em;
 }
