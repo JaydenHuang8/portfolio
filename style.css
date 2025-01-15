@@ -8,7 +8,7 @@ body {
     padding: 1rem;
   }
 
-.current {
+nav {
   display: flex;
 }
 nav a {
