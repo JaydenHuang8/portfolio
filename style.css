@@ -5,7 +5,12 @@ body {
     font: 100%/1.5 system-ui;
     max-width: 100ch;
     margin-inline: auto;
-    padding: 8ch;
-
+    padding: 1rem;
   }
 
+.current {
+  display: flex;
+}
+nav a {
+  flex: 1;
+}
