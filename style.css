@@ -49,4 +49,6 @@ label {
 
 input, textarea, button {
   font: inherit;
+  display: block;
+  width: 100%;
 }
