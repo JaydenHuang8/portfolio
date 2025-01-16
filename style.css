@@ -1,5 +1,5 @@
 :root {
-  --color-accent: oklch(77% 0 0);
+  --color-accent: oklch(65% 50% 0);
 }
 
 body {
@@ -31,6 +31,11 @@ nav a:hover {
   padding-bottom: 0.3em;
 }
 .current {
+  font-weight: bold;
   border-bottom: 0.4em solid oklch(80% 3% 200);
   padding-bottom: 0.3em;
+}
+
+input, textarea, button {
+  font: inherit;
 }
