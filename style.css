@@ -56,3 +56,6 @@ form {
   grid-column: 1 / -1; 
   gap: 0.5em;  
 }
+button {
+  grid-column: 1 / -1;
+}
