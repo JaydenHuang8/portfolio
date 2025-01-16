@@ -36,10 +36,17 @@ nav a:hover {
   padding-bottom: 0.3em;
 }
 
-input, textarea, button {
-  font: inherit;
+form {
   display: block;
   width: 100%;
   box-sizing: border-box;
+}
+
+label {
+  display: block;
   margin-block: 1em 2em;
+}
+
+input, textarea, button {
+  font: inherit;
 }
