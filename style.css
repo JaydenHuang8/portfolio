@@ -38,4 +38,8 @@ nav a:hover {
 
 input, textarea, button {
   font: inherit;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin-block: 1em 2em;
 }
