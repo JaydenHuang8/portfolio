@@ -37,11 +37,13 @@ nav a:hover {
 }
 
 form {
-  display: block;
-  width: 100%;
-  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  /* width: 100%; */
+
 }
 
+/* 
 label {
   display: block;
   margin-block: 1em 2em;
@@ -51,4 +53,4 @@ input, textarea, button {
   font: inherit;
   display: block;
   width: 100%;
-}
+} */
