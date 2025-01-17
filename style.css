@@ -15,6 +15,7 @@ body {
 nav {
   display: flex;
   border-bottom: 1px solid oklch(80% 3% 200);
+  margin-bottom: 1em;
 }
 nav a {
   flex: 1;
@@ -36,16 +37,10 @@ nav a:hover {
 
 form {
   display: grid;
-  grid-template-columns: auto 1fr;
-  /* width: 100%; */
-
-}
-
-form {
-  display: grid;
   grid-template-columns: auto 1fr; 
   gap: 1em; 
   width: 100%;
+  font: inherit;
 }
 
 .field-group {
