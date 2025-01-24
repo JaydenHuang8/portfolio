@@ -37,23 +37,32 @@ for (let p of pages) {
     let title = p.title;
     // TODO create link and add it to nav
 
-
     console.log('adding to nav');
-
-    if (!ARE_WE_HOME && !url.startsWith('http')) {
-        // non home page
-        url = '../' + url;
-        nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
-        continue
-    }
 
     if (url.startsWith('https://github.com')) {
         // github page
-        nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
-        continue;
+        url = url
+    } else if (!ARE_WE_HOME && !url.startsWith('http')) {
+        // non home page
+        url = '../' + url;
+    } else {
+        // home page
+        url = 'https://jaydenhuang8.github.io/portfolio/' + url
     }
-    // home page
-    url = 'https://jaydenhuang8.github.io/portfolio/' + url
-    nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
+
+    
+    let a = document.createElement('a');
+    a.href = url;
+    a.textContent = title;
+
+    if (a.host === location.host && a.pathname === location.pathname) {
+        a.classList.add('current');
+    }
+
+    if (a.host !== location.host) {
+        a.target = "_blank";
+    }
+    
+    nav.append(a);
 }
 console.log('nav done');g
