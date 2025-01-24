@@ -21,7 +21,7 @@ const navLinks = $$("nav a");
 let pages = [
     { url: '', title: 'Home' },
     { url: 'projects/', title: 'Projects' },
-    { url: 'contacts/', title: 'Contacts' },
+    { url: 'contact/', title: 'Contacts' },
     { url: 'resume/', title: 'Resume' },
     { url: 'https://github.com/JaydenHuang8', title: 'GitHub'},
     // add the rest of your pages here
@@ -60,9 +60,11 @@ for (let p of pages) {
     }
 
     if (a.host !== location.host) {
+        console.log('outside link:')
+        console.log(url)
         a.target = "_blank";
     }
-    
+
     nav.append(a);
 }
-console.log('nav done');g
+console.log('nav done');
