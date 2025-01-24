@@ -34,6 +34,7 @@ for (let p of pages) {
     let url = p.url;
     let title = p.title;
     // TODO create link and add it to nav
+    console.log('adding to nav');
     if (url.startsWith('https://github.com')) {
         nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
         continue;
@@ -42,3 +43,4 @@ for (let p of pages) {
 
     nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
 }
+console.log('nav done');
