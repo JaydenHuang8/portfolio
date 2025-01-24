@@ -23,7 +23,7 @@ let pages = [
     { url: 'projects/', title: 'Projects' },
     { url: 'contacts/', title: 'Contacts' },
     { url: 'resume/', title: 'Resume' },
-    { url: 'https://github.com/JaydenHuang8', title: 'GitHub', external: true },
+    { url: 'https://github.com/JaydenHuang8', title: 'GitHub'},
     // add the rest of your pages here
  ];
 
@@ -41,17 +41,19 @@ for (let p of pages) {
     console.log('adding to nav');
 
     if (!ARE_WE_HOME && !url.startsWith('http')) {
+        // non home page
         url = '../' + url;
         nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
         continue
     }
 
     if (url.startsWith('https://github.com')) {
+        // github page
         nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
         continue;
     }
+    // home page
     url = 'https://jaydenhuang8.github.io/portfolio/' + url
-
     nav.insertAdjacentHTML('beforeend', `<a href="${url}">${title}</a>`);
 }
-console.log('nav done');
+console.log('nav done');g
