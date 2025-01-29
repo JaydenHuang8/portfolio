@@ -105,8 +105,6 @@ select.addEventListener('input', function (event) {
     document.documentElement.style.setProperty('color-scheme', selectedScheme);
 });
 
-const url = '../lib/projects.json'
-
 export async function fetchJSON(url) {
     try {
         // Fetch the JSON file from the given URL
@@ -125,4 +123,43 @@ export async function fetchJSON(url) {
     }
 }
 
-fetchJSON(url)
+export function renderProjects(project, containerElement, headingLevel = 'h2') {
+    // Your code will go here
+    if (!(containerElement instanceof HTMLElement)) {
+        console.error('Invalid container element provided.');
+        return;
+    } // make sure containerElement is a valid DOM
+
+    // Ensure headingLevel is valid (only allow h1-h6)
+    if (!/^h[1-6]$/.test(headingLevel)) {
+        console.warn(`Invalid heading level "${headingLevel}". Defaulting to h2.`);
+        headingLevel = 'h2'; // Default to h2 if input is invalid
+    }
+
+    containerElement.innerHTML = ''; //outside loop
+    // makesure its container empty
+    project.forEach(p => {
+        const title = p.title || 'Untitled Project';
+        const image = p.image || 'https://vis-society.github.io/labs/2/images/empty.svg';
+        //image coming
+        const description = p.description || 'No description available.';
+
+        const article = document.createElement('article');
+        article.innerHTML = `
+        <${headingLevel}>${title}</${headingLevel}>
+        <img src="${image}" alt="${title}" onerror="this.src='fallback-image.jpg';">
+        <p>${description}</p>
+        `;
+
+        containerElement.appendChild(article);
+    });
+}
+
+export function countProjects(project, titleElement) {
+    // Check if projects is an array
+    if (Array.isArray(project)) {
+        titleElement.textContent = `${projectCount} Projects`;
+    } else {
+        console.error('Invalid projects data');
+    }
+}
