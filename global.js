@@ -105,3 +105,21 @@ select.addEventListener('input', function (event) {
     document.documentElement.style.setProperty('color-scheme', selectedScheme);
 });
 
+const url = '../lib/projects.json'
+
+export async function fetchJSON(url) {
+    try {
+        // Fetch the JSON file from the given URL
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error(`Failed to fetch projects: ${response.statusText}`);
+        }
+        console.log(response)
+
+    } catch (error) {
+        console.error('Error fetching or parsing JSON data:', error);
+    }
+}
+
+fetchJSON(url)
