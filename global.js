@@ -158,6 +158,7 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
 export function countProjects(project, titleElement) {
     // Check if projects is an array
     if (Array.isArray(project)) {
+        const projectCount = project.length;
         titleElement.textContent = `${projectCount} Projects`;
     } else {
         console.error('Invalid projects data');
