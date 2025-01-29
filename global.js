@@ -116,6 +116,9 @@ export async function fetchJSON(url) {
             throw new Error(`Failed to fetch projects: ${response.statusText}`);
         }
         console.log(response)
+        
+        const data = await response.json();
+        return data; 
 
     } catch (error) {
         console.error('Error fetching or parsing JSON data:', error);
