@@ -135,12 +135,15 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
         console.warn(`Invalid heading level "${headingLevel}". Defaulting to h2.`);
         headingLevel = 'h2'; // Default to h2 if input is invalid
     }
+   
 
     containerElement.innerHTML = ''; //outside loop
     // makesure its container empty
     project.forEach(p => {
         const title = p.title || 'Untitled Project';
         const image = p.image || 'https://vis-society.github.io/labs/2/images/empty.svg';
+        const year = p.year || 'unknown';
+        //image coming
         //image coming
         const description = p.description || 'No description available.';
 
@@ -148,9 +151,13 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
         article.innerHTML = `
         <${headingLevel}>${title}</${headingLevel}>
         <img src="${image}" alt="${title}" onerror="this.src='fallback-image.jpg';">
-        <p>${description}</p>
+        <div>
+            <p>${description}</p>
+            <br />
+            <p>c. ${year}</p>
+        </div>
         `;
-
+        
         containerElement.appendChild(article);
     });
 }
