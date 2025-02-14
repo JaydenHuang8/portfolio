@@ -17,18 +17,18 @@ let searchInput = document.querySelector('.searchBar');
 let selectedIndex = -1;
 
 function renderPieChart(projectsGiven) {
-  // Clear existing paths and legend items before re-rendering
+  //clear existing paths and legend items for re-rendering
   let svg = d3.select('svg')
-  svg.selectAll('path').remove(); // Remove old pie slices
-  d3.select('.legend').selectAll('li').remove(); // Remove old legend items
+  svg.selectAll('path').remove();  
+  d3.select('.legend').selectAll('li').remove();  
 
-  // re-calculate rolled data
+  //re-calculate rolled data
   let newRolledData = d3.rollups(
     projectsGiven,
     (v) => v.length,
     (d) => d.year,
   );
-  // re-calculate data
+  //re-calculate data
   let newData = newRolledData.map(([year, count]) => {
     return { value: count, label: year };
   });
@@ -76,7 +76,6 @@ function renderPieChart(projectsGiven) {
 renderPieChart(projects);
 
 let query = '';
-
 
 searchInput.addEventListener('change', (event) => {
 //update query value
