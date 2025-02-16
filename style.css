@@ -1,6 +1,7 @@
 :root {
   --color-accent: oklch(65% 50% 0);
   --border-color: oklch(50% 10% 200 / 40%);
+  --light-brown-color: oklch(97.01% 0.03 90.3);
   color-scheme: light dark;
 }
 
@@ -128,7 +129,17 @@ h1, h2, h3, h4, h5, h6 {
 dl {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* Four equal columns */
+  gap: 1em; /* Increase space between items */
   text-align: left;
+
+
+  /* 🔹 Box Styling */
+  border: 2px solid var(--border-color);  /* Adds a border around the stats */
+  padding: 20px;           /* Adds space inside the box */
+  border-radius: 10px;     /* Rounds the corners */
+  background-color: var(--light-brown-color); /* Light background color */
+  max-width: 800px; /* Prevents it from stretching too wide */
+  margin: 20px auto; /* Centers the box horizontally */
 }
 
 dt {
@@ -146,23 +157,146 @@ dd {
   text-align: left;
 }
 
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr; /* First column for labels, second for values */
+  gap: 5px 15px; /* Space between rows and columns */
+  align-items: center;
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+dl.info dt {
+  font-size: 14px;
+  color: gray;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+dl.info dd {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+#commit-tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  background: var(--light-brown-color);
+  color: black;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  pointer-events: none; /* Prevents cursor interference */
+  
+  transition: opacity 200ms ease-in-out;
+  border: 2px solid var(--border-color);
+}
+
+circle {
+  transition: transform 200ms ease-in-out;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+  fill: #fdb750; /* Optional: Change color on hover */
+}
+
+circle.selected {
+  fill: #ff6b6b;
+}
+
+/* Style for gridlines */
+.gridlines line {
+  stroke: #ddd; /* Light gray color */
+  stroke-opacity: 0.7; /* Slightly transparent */
+  stroke-dasharray: 4 4; /* Creates a dashed line */
+}
+
+/* Hide the main axis line */
+.gridlines path {
+  stroke: none;
+}
+
+
+.selection {
+  fill: rgba(50, 150, 255, 0.15); /* Light blue semi-transparent */
+  stroke: #007bff; /* Bright blue border */
+  stroke-width: 2px;
+  stroke-opacity: 1;
+  stroke-dasharray: 6 3; /* Uniform dashes */
+  stroke-linejoin: round; /* Smooth corners */
+  animation: marching-ants 1.5s linear infinite; /* Cool animated effect */
+}
+
+/* ✨ Smooth Animated Dashed Border */
+@keyframes marching-ants {
+  to {
+    stroke-dashoffset: -8; 
+  }
+}
+
+/* 📌 Language breakdown container with structured grid */
+#language-breakdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); /* Auto-adjusts columns */
+  gap: 0.5rem 1rem; /* Space between rows and columns */
+  align-items: center;
+  background: var(--background-color, #f9f9f9); /* Light background */
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid var(--border-color, #ddd);
+  max-width: 100%; /* Takes full width */
+  box-shadow: 0.125rem 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+
+#language-breakdown dt, 
+#language-breakdown dd {
+  text-align: center;
+}
+
+#language-breakdown dt {
+  font-size: 0.875rem; /* ~14px */
+  font-weight: bold;
+  color: var(--text-color, #333);
+  text-transform: uppercase;
+}
+
+#language-breakdown dd {
+  font-size: 1rem; /* ~16px */
+  font-weight: normal;
+  margin: 0;
+  color: var(--text-color, #555);
+}
+
+#language-breakdown dt:first-child {
+  grid-column: span 1; /* Ensures the first item spans correctly */
+}
+
+#language-breakdown dd:last-child {
+  margin-bottom: 0.5rem;
+}
+
+
+
+
+
 #projects-pie-plot {
   max-width: 20em;
   margin-block: 2em;
 
   overflow: visible;
 }
-
-/* Legend container
-.legend {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr)); 
-  gap: 0.5em;
-  padding: 1em;
-  list-style: none; 
-  margin: 0;
-} 
-*/
 
 /* Container that holds the pie chart and legend */
 .container {
@@ -243,3 +377,5 @@ path {
   --color: oklch(60% 45% 0) !important; /*highlight color*/
   background-color: var(--color); /* Override background */
 }
+
+
