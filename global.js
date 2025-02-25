@@ -136,7 +136,7 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
 
         //image coming
         const description = p.description || 'No description available.';
-
+        console.log(image);
         const article = document.createElement('article');
         article.innerHTML = `
         <${headingLevel}>${title}</${headingLevel}>
