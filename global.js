@@ -6,17 +6,6 @@ function $$(selector, context = document) {
 
 const navLinks = $$("nav a");
 
-// step 2 stuff
-
-// let currentLink = navLinks.find(
-//     (a) => a.host === location.host && a.pathname === location.pathname
-// );
-
-// if (currentLink) {
-// currentLink.classList.add('current');
-// }
-
-// step 3 stuff
 
 let pages = [
     { url: '', title: 'Home' },
@@ -142,16 +131,19 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
     // makesure its container empty
     project.forEach(p => {
         const title = p.title || 'Untitled Project';
-        const image = p.image || 'https://vis-society.github.io/labs/2/images/empty.svg';
+        let image = p.image || 'https://vis-society.github.io/labs/2/images/empty.svg';
         const year = p.year || 'unknown';
         //image coming
+        if (p.image && !p.image.startsWith('http')) {
+            image = window.location.origin + '/lib/' + p.image;
+        }
         //image coming
         const description = p.description || 'No description available.';
 
         const article = document.createElement('article');
         article.innerHTML = `
         <${headingLevel}>${title}</${headingLevel}>
-        <img src="${image}" alt="${title}" onerror="this.src='fallback-image.jpg';">
+        <img src="${image}" alt="${title}" onerror="this.src='https://vis-society.github.io/labs/2/images/empty.svg';">
         <div>
             <p>${description}</p>
             <br />
