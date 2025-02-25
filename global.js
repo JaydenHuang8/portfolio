@@ -133,10 +133,7 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
         const title = p.title || 'Untitled Project';
         let image = p.image || 'https://vis-society.github.io/labs/2/images/empty.svg';
         const year = p.year || 'unknown';
-        //image coming
-        if (p.image && !p.image.startsWith('http')) {
-            image = window.location.origin + '/lib/' + p.image;
-        }
+
         //image coming
         const description = p.description || 'No description available.';
 
