@@ -10,11 +10,36 @@
     <h1>Meta</h1>
     <p>This page includes stats about the code of this website.</p>
 
+    <div id="filter_ui">
+        <label for="commit_slider">Show commits until:</label>
+        <input type="range" id="commit_slider" min="0" max="100" value="100">
+        <time id="commit_time"></time>
+    </div>
+    
+    
+
     <h2>Summary</h2>
     <div id="stats"></div>
 
-    <h2>Commits by time of day</h2>
-    <div id="chart"></div>
+    <div id="scrollytelling">
+        <div id="scroll-container-file">
+            <div id="spacer-file"></div>
+            <div id="items-container-file"></div>
+        </div>
+
+        <dl class="files"></dl>
+
+
+        <h2>Commits by time of day</h2>
+        <div id="scroll-container">
+            <div id="spacer"></div>
+            <div id="items-container"></div>
+        </div>
+        <!-- our old scatterplot div -->
+        
+        <div id="chart"></div>
+    </div>
+    
 
     <dl id="commit-tooltip" class="info tooltip">
         <dt>Commit</dt>
