@@ -605,8 +605,8 @@ scrollContainer.on('scroll', () => {
 });
 
 function renderItems(startIndex) {
-  // **Sort commits by datetime in ascending order**
-  let sortedCommits = filteredCommits.slice().sort((a, b) => a.datetime - b.datetime);
+  // **Sort commits by datetime in desc order**
+  let sortedCommits = filteredCommits.slice().sort((a, b) => b.datetime - a.datetime);
 
   // Define the slice of commits to render
   const endIndex = Math.min(startIndex + VISIBLE_COUNT, sortedCommits.length);
