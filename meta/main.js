@@ -448,6 +448,9 @@ function updateFileDetails(filteredCommits) {
       }))
       .sort((a, b) => b.totalLines - a.totalLines); // **Sort commits by total lines (Most lines first)**
 
+  // **Limit to top 5 commits**
+  commitsGrouped = commitsGrouped.slice(0, 5);
+
   // Select the files container and remove previous entries
   d3.select('.files').selectAll('div').remove();
 
@@ -496,6 +499,8 @@ function updateCommitTime() {
   filteredCommits = commits.filter(d => d.datetime <= commitMaxTime);
 
   // Update scatterplot dynamically
+  renderItemsFile(0);
+
   updateFileDetails(filteredCommits);
 
   displayStats(filteredCommits)
@@ -527,7 +532,7 @@ scrollContainerFile.on("scroll", () => {
 
 function renderItemsFile(startIndexFile) {
   // **Sort commits by totalLines in descending order**
-  let sortedCommitsFile = commits.slice().sort((a, b) => b.totalLines - a.totalLines);
+  let sortedCommitsFile = filteredCommits.slice().sort((a, b) => b.totalLines - a.totalLines);
 
   // **Ensure scrolling does not run out of content**
   const maxIndex = Math.max(0, sortedCommitsFile.length - VISIBLE_COUNT_FILE);
@@ -601,7 +606,7 @@ scrollContainer.on('scroll', () => {
 
 function renderItems(startIndex) {
   // **Sort commits by datetime in ascending order**
-  let sortedCommits = commits.slice().sort((a, b) => a.datetime - b.datetime);
+  let sortedCommits = filteredCommits.slice().sort((a, b) => a.datetime - b.datetime);
 
   // Define the slice of commits to render
   const endIndex = Math.min(startIndex + VISIBLE_COUNT, sortedCommits.length);
