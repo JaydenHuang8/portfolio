@@ -555,10 +555,11 @@ function renderItemsFile(startIndexFile) {
                   div.append('p').html((commit, index) => `
                       On ${commit.datetime.toLocaleString("en", { dateStyle: "full", timeStyle: "short" })}, I made
                       <a href="${commit.url}" target="_blank">
-                          ${index > 0 ? 'another glorious commit' : 'my first commit, and it was glorious'}
+                          ${index > 0 ? 'another commit' : 'my first commit'}
                       </a>.<br>
                       I edited <strong>${commit.totalLines}</strong> lines across 
                       ${d3.rollups(commit.lines, D => D.length, d => d.file).length} files.
+                      I'm glad I made progress.
                   `);
               }),
           update => update
